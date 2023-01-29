@@ -12,6 +12,8 @@ const CustomerBillingList = () => {
  const handleShow = ()=> setShow(true);
  const handleClose = () => setShow(false);
 
+ 
+
   return (
     <>
       <div className="table-title">
@@ -44,7 +46,7 @@ const CustomerBillingList = () => {
         </thead>
         <tbody>
           {bills.map((bill) => (
-            <tr key={bill.id}>
+            <tr key={bill._id}>
               <CustomerBilling bill={bill} />
             </tr>
           ))}
