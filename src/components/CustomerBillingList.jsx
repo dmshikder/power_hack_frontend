@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
+import { CustomerBillingContext } from "../contexts/CustomerBillingContexts";
+import AddBill from "./AddBill";
 import CustomerBilling from "./CustomerBilling";
 
 const CustomerBillingList = () => {
+  const { bills } = useContext(CustomerBillingContext);
+
+  const [show,setShow] = useState(false)
+
+ const handleShow = ()=> setShow(true);
+ const handleClose = () => setShow(false);
 
   return (
     <>
@@ -14,9 +23,10 @@ const CustomerBillingList = () => {
             <input type="text" />
           </div>
           <div className="col-sm-6">
-            <button>
-              <span>Add New Bill</span>
-            </button>
+
+            <Button onClick={handleShow} className='btn btn-success' data-toggle='modal'>Add bill
+
+            </Button>
           </div>
         </div>
       </div>
@@ -33,9 +43,21 @@ const CustomerBillingList = () => {
           </tr>
         </thead>
         <tbody>
-         <tr> <CustomerBilling /></tr>
+          {bills.map((bill) => (
+            <tr key={bill.id}>
+              <CustomerBilling bill={bill} />
+            </tr>
+          ))}
         </tbody>
       </table>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Bill</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <AddBill/>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

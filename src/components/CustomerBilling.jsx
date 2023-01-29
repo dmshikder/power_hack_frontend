@@ -1,14 +1,14 @@
 import React from "react";
 
 
-const CustomerBilling = () => {
+const CustomerBilling = ({bill}) => {
   return (
     <>
-      <td>1</td>
-      <td>tusher</td>
-      <td>abc@gmail.com</td>
-      <td>0123654</td>
-      <td>30</td>
+      <td>{bill.id}</td>
+      <td>{bill.fullName}</td>
+      <td>{bill.email}</td>
+      <td>{bill.phone}</td>
+      <td>{bill.paidAmount}</td>
       <td>
         <i className="fa-solid fa-pencil text-secondary me-4"></i>
         <i className="fa-solid fa-trash text-danger"></i>
