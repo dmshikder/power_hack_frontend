@@ -33,8 +33,13 @@ const CustomerBillingContextProvider = (props)=>{
 
   }
 
+
+  const updateBill = (id,updatedBill) =>{
+    setBills(bills.map(bill=> bill._id === id ? updatedBill : bill))
+  }
+
     return(
-        <CustomerBillingContext.Provider value={{bills,handleDelete}}>
+        <CustomerBillingContext.Provider value={{bills,handleDelete, updateBill}}>
             {props.children}
         </CustomerBillingContext.Provider>
 
