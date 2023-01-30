@@ -1,15 +1,22 @@
-import './App.css';
-import CustomerBillingList from './components/CustomerBillingList';
-import CustomerBillingContextProvider from './contexts/CustomerBillingContexts';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Billings from "./components/Billings";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 
 function App() {
   return (
     <div className="App">
-    <h1 className='text-primary'>Bangladesh</h1>
-    <CustomerBillingContextProvider>
-    <CustomerBillingList/>
-    </CustomerBillingContextProvider>
-
+      <Routes>
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/signup" element={<SignUp/>}></Route>
+        <Route path='/billings' element={<Billings/>}></Route>
+        
+        {/* <h1 className="text-primary">Bangladesh</h1> */}
+        {/* <CustomerBillingContextProvider>
+          <CustomerBillingList />
+        </CustomerBillingContextProvider> */}
+        </Routes>
       
     </div>
   );

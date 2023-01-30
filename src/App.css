@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.pagination button {
+  margin: 10px;
+  margin-left: 10px;
+  gap: 20px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid orange;
+}
+
+.pagination .selected {
+  background-color: #2d40e7;
+  color: white;
+}

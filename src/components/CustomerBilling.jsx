@@ -27,6 +27,7 @@ const Customerbilling = ({bill}) => {
         <i onClick={handleShow} className="fa-solid fa-pencil text-secondary me-4"></i>
         <i onClick={()=>handleDelete(bill._id)} className="fa-solid fa-trash text-danger"></i>
       </td>
+     
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
