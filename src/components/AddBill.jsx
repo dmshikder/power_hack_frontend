@@ -10,6 +10,10 @@ const AddBill = () => {
         const phone =e.target.phone.value;
         const paidAmount =e.target.paidAmount.value;
 
+        if(phone.length !== 11){
+            return alert('Please enter 11 digit phone number');
+        }
+
         const newBill = {fullName,email, phone, paidAmount};
 
         fetch ('http://localhost:5000/add-billing',{

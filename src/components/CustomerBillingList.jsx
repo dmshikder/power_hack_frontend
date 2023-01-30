@@ -12,6 +12,15 @@ const CustomerBillingList = () => {
  const handleShow = ()=> setShow(true);
  const handleClose = () => setShow(false);
 
+ const [searchResult, setSearchResult]= useState('');
+
+
+ const handleSearch = e =>{
+  const searchText = e.target.value;
+  const match = bills.filter(i => i.fullName.includes(searchText)|| i.email.includes(searchText)|| i.phone.includes(searchText));
+  setSearchResult(match);
+ }
+
  
 
   return (
@@ -22,7 +31,7 @@ const CustomerBillingList = () => {
             <h2 className="ms-4">
               <b>Billings</b>
             </h2>
-            <input type="text" />
+            <input onChange={handleSearch} type="text" placeholder="search here"/>
           </div>
           <div className="col-sm-6">
 
@@ -45,11 +54,23 @@ const CustomerBillingList = () => {
           </tr>
         </thead>
         <tbody>
-          {bills.map((bill) => (
+
+        {searchResult?searchResult.map((bill) => (
+            <tr key={bill._id}>
+              <CustomerBilling bill={bill} />
+            </tr>
+          )): bills.map((bill) => (
             <tr key={bill._id}>
               <CustomerBilling bill={bill} />
             </tr>
           ))}
+
+        
+          {/* {searchResult.map((bill) => (
+            <tr key={bill._id}>
+              <CustomerBilling bill={bill} />
+            </tr>
+          ))} */}
         </tbody>
       </table>
       <Modal show={show} onHide={handleClose}>
